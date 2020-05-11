@@ -34,9 +34,9 @@ spec:
             - name: gateway_url
               value: "http://gateway.{{ .Release.Namespace }}:8080/"
             - name: prometheus_host
-              value: "prometheus.{{ .Release.Namespace }}"
+              value: {{ .Values.faasIdler.prometheus.host | default (printf "prometheus.%s" .Release.Namespace ) | quote }}
             - name: prometheus_port
-              value: "9090"
+              value: {{ .Values.faasIdler.prometheus.port | quote }}
             - name: inactivity_duration
               value: {{ .Values.faasIdler.inactivityDuration }}
             - name: reconcile_interval

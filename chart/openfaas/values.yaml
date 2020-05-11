@@ -177,6 +177,9 @@ ingressOperator:
 # faas-idler configuration
 faasIdler:
   image: openfaas/faas-idler:0.3.0
+  prometheus:
+    # host:
+    port: 9090
   replicas: 1
   create: true
   inactivityDuration: 30m               # If a function is inactive for 15 minutes, it may be scaled to zero
